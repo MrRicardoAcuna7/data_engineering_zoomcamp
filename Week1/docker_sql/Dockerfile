@@ -1,5 +1,8 @@
 FROM python:3.9
 
-RUN pip install pandas
+RUN apt-get install wget
+RUN pip install pandas sqlalchemist psycopg2
 
-ENTRYPOINT [ "bash" ]
+WORKDIR /app
+COPY ingest_data.py pipeline.py
+ENTRYPOINT [ "python","pipeline.py" ]
