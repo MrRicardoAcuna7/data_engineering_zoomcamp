@@ -13,3 +13,4 @@
 serving_dir
 *.csv
 .ipynb_checkpoints/
+Week1/docker_sql/ny_taxi_postgres_data/*
