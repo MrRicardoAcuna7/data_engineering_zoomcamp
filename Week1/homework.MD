@@ -169,3 +169,25 @@ For example:
 "Jamaica Bay / Clinton East"
 
 If any of the zone names are unknown (missing), write "Unknown". For example, "Unknown / Clinton East".
+
+
+--SELECT COUNT(1) FROM yellow_taxi_trips WHERE CAST(tpep_pickup_datetime as DATE)='20210215'
+--How many taxi trips were there on January 15?
+SELECT count(1) FROM yellow_taxi_trips  where cast(tpep_pickup_datetime as DATE)='2021-01-15';
+
+--Find the largest tip for each day. On which day it was the largest tip in January?
+SELECT cast(tpep_pickup_datetime as date) , max(trip_distance) FROM yellow_taxi_trips group by cast(tpep_pickup_datetime as date)
+order by cast(tpep_pickup_datetime as date);
+
+--What was the most popular destination for passengers picked up in central park on January 14?
+select coalesce(tz."Zone",'Unknown'),count(yt.index) from yellow_taxi_trips yt  
+left join public.taxi_zone tz on "LocationID"  = "DOLocationID"
+where cast(tpep_pickup_datetime as DATE)='2021-01-14'
+group by tz."Zone" order by count(yt.index) desc;
+
+--What's the pickup-dropoff pair with the largest average price for a ride (calculated based on total_amount)?
+select concat(coalesce(pu."Zone",'Unknown'),'/',coalesce(dof."Zone",'Unknown')),avg(total_amount) from yellow_taxi_trips yt  
+left join public.taxi_zone dof on dof."LocationID"  = "DOLocationID"
+left join public.taxi_zone pu on pu."LocationID"  = "DOLocationID"
+group by concat(coalesce(pu."Zone",'Unknown'),'/',coalesce(dof."Zone",'Unknown'))
+order by avg(total_amount) desc;
