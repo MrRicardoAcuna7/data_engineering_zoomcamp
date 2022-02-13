@@ -40,7 +40,7 @@ If you ever set or change modules or backend configuration for Terraform,
 rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 
-Richard Acuna@DESKTOP-I2BV64V MINGW64 /c/cursos/data_engineering_zoomcamp_RA/data_engineering_zoomcamp/Week1/gcp_terraform (main)
+Richard Acuna@DESKTOP MINGW64 /c/cursos/data_engineering_zoomcamp_RA/data_engineering_zoomcamp/Week1/gcp_terraform (main)
 $ terraform plan
 var.project
   dtc-de-course-racuna
@@ -84,7 +84,7 @@ No changes. Your infrastructure matches the configuration.
 Your configuration already matches the changes detected above. If you'd like to update the Terraform state to match, create and apply a refresh-only plan:
   terraform apply -refresh-only
 
-Richard Acuna@DESKTOP-I2BV64V MINGW64 /c/cursos/data_engineering_zoomcamp_RA/data_engineering_zoomcamp/Week1/gcp_terraform (main)
+Richard Acuna@DESKTOP MINGW64 /c/cursos/data_engineering_zoomcamp_RA/data_engineering_zoomcamp/Week1/gcp_terraform (main)
 $ terraform apply
 var.project
   dtc-de-course-racuna
